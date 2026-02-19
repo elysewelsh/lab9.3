@@ -5,9 +5,10 @@ function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
 // when dropdown changed, event passed as parameter to use value of target clicked to send to function to update specific task with that new status
     const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 // new status picked from dropdown and has to be of TaskStatus type
-        const newStatus = (event.target.value) as TaskStatus;
-// call onStatusChange with parameters it requested
-        onStatusChange(task.id, newStatus);
+//         const newStatus = (event.target.value) as TaskStatus;
+// // call onStatusChange with parameters it requested
+//         onStatusChange(task.id, newStatus);
+        alert("changed");
     };
 // when clicked, passing id of clicked task to onDelete function
     const handleDelete = () => {
@@ -36,13 +37,7 @@ function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
 };
 export default TaskItem;
 
-function onStatusChange (taskId, newStatus) {
-    {taskId = tasks.task.id? update tasks.task.status to newStatus}
-}
 
-function onDelete (taskId) {
-    {taskId = tasks.task.id? delete that one from array}
-}
 
 // HELP: 
 // --I don't understand how the options get sent to the functions.

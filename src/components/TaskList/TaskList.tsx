@@ -10,76 +10,87 @@ import { ogTasks } from '../../data'
 
 // let property = e.target.value
 
+// UNCOMMENT FROM HERE TO LINE 58
+// interface IFilterProp {
+//     status?: string,
+//     priority?: string
+// }
 
-interface IFilterProp {
-    status?: string,
-    priority?: string
-}
+// const setFilters: React.FC = () => {
+//     const [filters,setFilter] = useState<IFilterProp>(
+//         {
+//             status: '',
+//             priority: ''
+//         }
+//     );
 
-const setFilters: React.FC = () => {
-    const [filters,setFilter] = useState<IFilterProp>(
-        {
-            status: '',
-            priority: ''
-        }
-    );
+//     const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+//         event.preventDefault();
+//         const {id, value} = event.target;
+//         setFilter((prevFilter: IFilterProp) => ({
+//             ...prevFilter,
+//             [id]: value
+//         }));
+//         // onFilterChange({filters});
+//     };
 
-    const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        event.preventDefault();
-        const {id, value} = event.target;
-        setFilter((prevFilter: IFilterProp) => ({
-            ...prevFilter,
-            [id]: value
-        }));
-        // onFilterChange({filters});
-    };
 
-    <TaskList (newArray)/>
-
-    return (
-        <form>
-            <label htmlFor="status">Choose an option:</label>
-            <select id="status" value={filters.status} onChange={handleFilterChange}>
-                <option value="completed">Completed</option>
-                <option value="pending">Pending</option>
-                <option value="inProgress">In-Progress</option>
-                <option value="allS">All Statuses</option>
-            </select>
-            <p>Selected: {filters.status}</p>
-            <label htmlFor="priority">Choose an option:</label>
-            <select id="priority" value={filters.priority} onChange={handleFilterChange}>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="allP">All Priorities</option>
-            </select>
-            <p>Selected: {filters.priority}</p>
-        </form>
-    );
-};
+//     return (
+//         <form>
+//             <label htmlFor="status">Choose an option:</label>
+//             <select id="status" value={filters.status} onChange={handleFilterChange}>
+//                 <option value="">All Statuses</option>
+//                 <option value="completed">Completed</option>
+//                 <option value="pending">Pending</option>
+//                 <option value="inProgress">In-Progress</option>
+//             </select>
+//             <p>Selected: {filters.status}</p>
+//             <label htmlFor="priority">Choose an option:</label>
+//             <select id="priority" value={filters.priority} onChange={handleFilterChange}>
+//                 <option value="">All Priorities</option>
+//                 <option value="low">Low</option>
+//                 <option value="medium">Medium</option>
+//                 <option value="high">High</option>
+//             </select>
+//             <p>Selected: {filters.priority}</p>
+//         </form>
+//     );
+// };
 
 // const filt = {e => setStatus(e.target.value)};
 
 
 
+
+
 export function TaskList ( {tasks, onStatusChange, onDelete}: TaskListProps) {
 // format each array of Task items into the structure defined in TaskItem
-    const list = tasks.map((task) => {
+function handleDelete (taskId: any) {
+onDelete(taskId);
+}; 
+function handleStatusChange (taskId:any, taskStatus:any) {
+    onStatusChange(taskId, taskStatus);
+};
+const list = tasks.map((task) => {
         return (
-            <li>
-            <TaskItem key={task.id} task={task} onStatusChange={onStatusChange} onDelete={onDelete}/>
+            <li key={task.id}>
+            <TaskItem  task={task} onStatusChange={handleStatusChange} onDelete={handleDelete}/>
             </li>
         )
     })
 // display the formatted array
     return (
+        <>
+        hello
+
         <ul>
             {list}
         </ul>
+        </>
     )
 }
 
-// HELP: I don't understand why these props?
+// HELP: 
 
 // used this from Lab 2:
 

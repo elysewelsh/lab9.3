@@ -15,27 +15,27 @@ export function TaskFilter ({onFilterChange: {filters: IFilterProp}}:TaskFilterP
 onFilterChange() {
 
 }
-    const completedTasks: Task[] = tasks.filter(task => task.status === "completed");
-    const inProgressTasks: Task[] = tasks.filter(task => task.status === "in-progress");
-    const pendingTasks: Task[] = tasks.filter(task => task.status === "pending");
-    const lowTasks: Task[] = tasks.filter(task => task.priority === "low");
-    const mediumTasks: Task[] = tasks.filter(task => task.priority === "medium");
-    const highTasks: Task[] = tasks.filter(task => task.priority === "high");
+    // const completedTasks: Task[] = tasks.filter(task => task.status === "completed");
+    // const inProgressTasks: Task[] = tasks.filter(task => task.status === "in-progress");
+    // const pendingTasks: Task[] = tasks.filter(task => task.status === "pending");
+    // const lowTasks: Task[] = tasks.filter(task => task.priority === "low");
+    // const mediumTasks: Task[] = tasks.filter(task => task.priority === "medium");
+    // const highTasks: Task[] = tasks.filter(task => task.priority === "high");
 
-    switch (filt) {  
-        case filt = "Completed":
-            return completedTasks;
-        case filt = "In-Progress":
-            return inProgressTasks;
-        case filt = "Pending":
-            return pendingTasks;
-        case filt = "Low":
-            return lowTasks;
-        case filt = "Medium":
-            return mediumTasks;
-        case filt = "High":
-            return highTasks;
-    };
+    // switch (filt) {  
+    //     case filt = "Completed":
+    //         return completedTasks;
+    //     case filt = "In-Progress":
+    //         return inProgressTasks;
+    //     case filt = "Pending":
+    //         return pendingTasks;
+    //     case filt = "Low":
+    //         return lowTasks;
+    //     case filt = "Medium":
+    //         return mediumTasks;
+    //     case filt = "High":
+    //         return highTasks;
+    // };
 
 
 
