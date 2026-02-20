@@ -4,6 +4,7 @@ import { TaskFilterProps } from '../../types';
 import { onFilterChange } from '../TaskFilter/TaskFilter'
 import { useState } from 'react';
 import { ogTasks } from '../../data'
+import { IFilterProp } from '../../types'
 
 // const [selectedStatus, setSelectedValue] = useState<string>('Pending'); // Default value
 // const [selectedPriority, setSelectedValue] = useState<string>('Low'); // Default value
@@ -11,51 +12,50 @@ import { ogTasks } from '../../data'
 // let property = e.target.value
 
 // UNCOMMENT FROM HERE TO LINE 58
-// interface IFilterProp {
-//     status?: string,
-//     priority?: string
-// }
+interface IFilterProp {
+    status?: string,
+    priority?: string
+}
 
-// const setFilters: React.FC = () => {
-//     const [filters,setFilter] = useState<IFilterProp>(
-//         {
-//             status: '',
-//             priority: ''
-//         }
-//     );
+const setFilters: React.FC = () => {
+    const [filters,setFilter] = useState<IFilterProp>(
+        {
+            status: '',
+            priority: ''
+        }
+    );
 
-//     const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-//         event.preventDefault();
-//         const {id, value} = event.target;
-//         setFilter((prevFilter: IFilterProp) => ({
-//             ...prevFilter,
-//             [id]: value
-//         }));
-//         // onFilterChange({filters});
-//     };
+    const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
+        const {id, value} = event.target;
+        setFilter((prevFilter: IFilterProp) => ({
+            ...prevFilter,
+            [id]: value
+        }));
+        // onFilterChange({filters});
+    };
 
-
-//     return (
-//         <form>
-//             <label htmlFor="status">Choose an option:</label>
-//             <select id="status" value={filters.status} onChange={handleFilterChange}>
-//                 <option value="">All Statuses</option>
-//                 <option value="completed">Completed</option>
-//                 <option value="pending">Pending</option>
-//                 <option value="inProgress">In-Progress</option>
-//             </select>
-//             <p>Selected: {filters.status}</p>
-//             <label htmlFor="priority">Choose an option:</label>
-//             <select id="priority" value={filters.priority} onChange={handleFilterChange}>
-//                 <option value="">All Priorities</option>
-//                 <option value="low">Low</option>
-//                 <option value="medium">Medium</option>
-//                 <option value="high">High</option>
-//             </select>
-//             <p>Selected: {filters.priority}</p>
-//         </form>
-//     );
-// };
+    return (
+        <form>
+            <label htmlFor="status">Choose an option:</label>
+            <select id="status" value={filters.status} onChange={handleFilterChange}>
+                <option value="">All Statuses</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="inProgress">In-Progress</option>
+            </select>
+            <p>Selected: {filters.status}</p>
+            <label htmlFor="priority">Choose an option:</label>
+            <select id="priority" value={filters.priority} onChange={handleFilterChange}>
+                <option value="">All Priorities</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <p>Selected: {filters.priority}</p>
+        </form>
+    );
+};
 
 // const filt = {e => setStatus(e.target.value)};
 

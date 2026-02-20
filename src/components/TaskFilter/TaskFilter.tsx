@@ -1,5 +1,4 @@
 import type { TaskFilterProps, TaskStatus} from "../../types"
-import type { IFilterProp } from "../TaskList/TaskList"
 
 // export interface TaskFilterProps {
 //   onFilterChange: (filters: {
@@ -8,12 +7,29 @@ import type { IFilterProp } from "../TaskList/TaskList"
 //   }) => void;
 // }
 
-export function TaskFilter ({onFilterChange: {filters: IFilterProp}}:TaskFilterProps) {
+export function TaskFilter ({onFilterChange}: TaskFilterProps) {
+return (
+          <form>
+            <label htmlFor="status">Choose an option:</label>
+            <select id="status" onChange={(e) => {onFilterChange({status: e.target.value as TaskStatus});}}>
+                <option value="">All Statuses</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="inProgress">In-Progress</option>
+            </select>
 
-// {onFilterChange: {status?: , priority?: }:TaskFilterProps}
-
-onFilterChange() {
-
+            <label htmlFor="priority">Choose an option:</label>
+            <select id="priority" onChange={(e) => {
+              let priorityValue: any = e.target.value;
+              priorityValue === ""? (priorityValue = undefined) : (priorityValue as 'low' | 'medium' | 'high');
+              onFilterChange({priority: priorityValue});}}>
+                <option value="">All Priorities</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </form>
+);
 }
     // const completedTasks: Task[] = tasks.filter(task => task.status === "completed");
     // const inProgressTasks: Task[] = tasks.filter(task => task.status === "in-progress");
@@ -39,21 +55,21 @@ onFilterChange() {
 
 
 
-const setFilter: React.FC = () => {
-    const [selectedStatus, setSelectedValue] = useState<string>('Pending'); // Default value
-    const [selectedPriority, setSelectedValue] = useState<string>('Low'); // Default value
+// const setFilter: React.FC = () => {
+//     const [selectedStatus, setSelectedValue] = useState<string>('Pending'); // Default value
+//     const [selectedPriority, setSelectedValue] = useState<string>('Low'); // Default value
 
-    const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        let property = event.target.value;
-        setSelectedValue({...prevProperty, [property]);
-    };
+//     const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+//         let property = event.target.value;
+//         setSelectedValue({...prevProperty, [property]);
+//     };
  
-  return (
-    <TaskList (newArray)>
-    </TaskList>
-  );
-};
-}
+//   return (
+//     <TaskList (newArray)>
+//     </TaskList>
+//   );
+// };
+// }
 
 
 // export function TaskFilter ({onFilterChange}:TaskFilterProps) {

@@ -27,3 +27,8 @@ export interface TaskFilterProps {
     priority?: 'low' | 'medium' | 'high';
   }) => void;
 }
+
+export interface IFilterProp {
+    status?: string,
+    priority?: string
+}
