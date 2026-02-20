@@ -102,7 +102,7 @@ const filteredTasks = tasks.filter((task) => {
   return (
     <>
     <TaskFilter onFilterChange={handleFilterChange}></TaskFilter>
-    <TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} />
+    <TaskList tasks={filteredTasks} onStatusChange={handleStatusChange} onDelete={handleDelete} />
     </>
   )
 }
