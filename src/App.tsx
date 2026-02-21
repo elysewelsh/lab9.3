@@ -61,39 +61,35 @@ const ogTasks: Task[] = [
 ]
 
 function App() {
-  
-const [tasks, setTasks] = useState(ogTasks);
 
-const [filterState, setFilterState] = useState({
-    status: "",
-    priority: ""
-});
-  
-function handleStatusChange (taskId:string, newStatus:TaskStatus) {
-    setTasks(prevTasks => prevTasks.map(task => task.id === taskId ? {...task, status: newStatus } : task));
-};
-
-// setMyArray(prevArray => prevArray.map(item => item.id === itemIdToUpdate ? { ...item, property: newValue } : item))
-
-function handleDelete (taskId:string) {
-    setTasks((prevTask) => 
-    prevTask.filter(tasks => tasks.id !== taskId)
-    );
-}
-
-function handleFilterChange (filters: {status?: TaskStatus, priority?: 'low' | 'medium' | 'high'}) {  
-    setFilterState((prevFilterState) => {
-        return { ...prevFilterState, ...filters };
+// useState set-up
+    const [tasks, setTasks] = useState(ogTasks);
+    const [filterState, setFilterState] = useState({
+        status: "",
+        priority: ""
     });
-};
+  
+// receives task.id and newly-selected status from TaskItem -> TaskList and updates the state of tasks array with new information
+    function handleStatusChange (taskId:string, newStatus:TaskStatus) {
+        setTasks(prevTasks => prevTasks.map(task => task.id === taskId ? {...task, status: newStatus } : task));
+    };
 
-const filteredTasks = tasks.filter(task => {
-    const includesStatus = filterState.status === "" || task.status.includes(filterState.status);
-    const includesPriority = filterState.priority === "" || task.priority.includes(filterState.priority);
-    return includesStatus && includesPriority;
-});
+// receives task.id from TaskItem -> TaskList and updates the state of tasks array to a filtered version where none of the task.ids match the deleted task.id
+    function handleDelete (taskId:string) {
+        setTasks((prevTask) => prevTask.filter(tasks => tasks.id !== taskId));
+    }
 
-// let result = FRUITS.filter(fruit => fruit.toLowerCase().includes(debouncedQuery.toLowerCase()))
+// receives newly-selected filters (status &&/|| priority) from TaskFilter and returns updated state of filters
+    function handleFilterChange (filters: {status?: TaskStatus, priority?: 'low' | 'medium' | 'high'}) {  
+        setFilterState((prevFilterState) => {return { ...prevFilterState, ...filters };});
+    };
+
+// creates filtered tasks array where filter properties (held in filterState) are compared to task properties from tasks array
+    const filteredTasks = tasks.filter(task => {
+        const includesStatus = filterState.status === "" || task.status.includes(filterState.status);
+        const includesPriority = filterState.priority === "" || task.priority.includes(filterState.priority);
+        return includesStatus && includesPriority;
+    });
 
 
     return (
@@ -106,3 +102,46 @@ const filteredTasks = tasks.filter(task => {
 };
 
 export default App
+
+
+// REFERENCES:
+
+// From Lesson 2 activity in Module 10:
+// let result = FRUITS.filter(fruit => fruit.toLowerCase().includes(debouncedQuery.toLowerCase()))
+
+// From Immutability lesson in Module 9:
+// setMyArray(prevArray => prevArray.map(item => item.id === itemIdToUpdate ? { ...item, property: newValue } : item))
+
+// From Module 9, Lesson 5 :
+//   const [username, setUsername] = useState('');
+//   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     setUsername(event.target.value);
+//   };
+//   // Handler for the form's onSubmit event
+//   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+//     // Prevent the default form submission (which causes a page reload)
+//     event.preventDefault();
+//     // Now you can handle the submission logic in JavaScript
+//     alert(`Submitting username: ${username}`);
+//     // In a real app, you might send 'username' to an API here
+//     setUsername(''); // Optionally clear the input after submission
+//   };
+//   return (
+//     // Attach the handler to the form's onSubmit event
+//     <form onSubmit={handleSubmit}>
+//       <h2>Simple Form</h2>
+//       <div>
+//         <label htmlFor="username">Username: </label>
+//         <input
+//           type="text"
+//           id="username"
+//           value={username}
+//           onChange={handleUsernameChange}
+//         />
+//       </div>
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// }
+// export default SimpleForm;
+
