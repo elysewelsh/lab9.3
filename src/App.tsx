@@ -1,19 +1,15 @@
 import { useState } from 'react'
 import  { TaskList } from './components/TaskList/TaskList'
-// import { onFilterChange, TaskFilter } from './components/TaskFilter/TaskFilter'
-import type { Task, TaskFilterProps, TaskStatus } from './types'
+import type { Task, TaskStatus } from './types'
 import {TaskFilter} from './components/TaskFilter/TaskFilter'
-import type { IFilterProp } from './types'
-// import {handleStatusChange, handleDelete } from './components/TaskItem/TaskItem'
 import './App.css'
-// import { TaskItem } from './components/TaskItem/TaskItem'
 
 const ogTasks: Task[] = [
     {
         id: "AC",
         title: "See Alice Cooper Live",
         description: `"Does this guy know how to party or what?"`,
-        status: "pending",
+        status: 'pending',
         priority: 'low',
         dueDate: "November",
     }
@@ -48,7 +44,7 @@ const ogTasks: Task[] = [
     {
         id: "WC",
         title: "Buy Excalibur",
-        description: `"No stairway!"`,
+        description: `"No Stairway!"`,
         status: "in-progress",
         priority:'high',
         dueDate: "ASAP",
@@ -65,11 +61,7 @@ const ogTasks: Task[] = [
 ]
 
 function App() {
-    // const [status, setStatus] = useState('All');
-    // const [priority, setPriority] = useState('All');
-
-let filteredTasks: Task[] = [];
-    
+  
 const [tasks, setTasks] = useState(ogTasks);
 
 const [filterState, setFilterState] = useState({
@@ -78,7 +70,6 @@ const [filterState, setFilterState] = useState({
 });
   
 function handleStatusChange (taskId:string, newStatus:TaskStatus) {
-    // console.log(taskId,newStatus);
     setTasks(prevTasks => prevTasks.map(task => task.id === taskId ? {...task, status: newStatus } : task));
 };
 
@@ -90,41 +81,26 @@ function handleDelete (taskId:string) {
     );
 }
 
-function handleFilterChange (filters: {status?: TaskStatus, priority?: string}): void {  
+function handleFilterChange (filters: {status?: TaskStatus, priority?: 'low' | 'medium' | 'high'}) {  
     setFilterState((prevFilterState) => {
         return { ...prevFilterState, ...filters };
     });
 };
 
-
-function filterTasks (tasks: Task[]) {
-    filterState.status === "" && filterState.priority === "" ? 
-        filteredTasks = tasks : 
-        filterState.status !== "" && filterState.priority !== "" ?
-            filteredTasks = tasks.filter(task => (task.status.includes(filterState.status) && task.priority.includes(filterState.priority))) :
-            filterState.status === "" ?
-                filteredTasks = tasks.filter(task => task.priority.includes(filterState.priority)) :
-                filteredTasks = tasks.filter(task => task.status.includes(filterState.status));
-    return filteredTasks;
-}
-
-// let filteredTasks = tasks.filter(task => task.status.includes(filterState.status))
-
-// const filteredTasks = tasks.filter((task) => {
-//     return (
-//         ((filterState.status === "") || ( task.status === filterState.status))
-//         &&
-//         ((filterState.priority === "") || (task.priority === filterState.priority))
-//     );
-// });
+const filteredTasks = tasks.filter(task => {
+    const includesStatus = filterState.status === "" || task.status.includes(filterState.status);
+    const includesPriority = filterState.priority === "" || task.priority.includes(filterState.priority);
+    return includesStatus && includesPriority;
+});
 
 // let result = FRUITS.filter(fruit => fruit.toLowerCase().includes(debouncedQuery.toLowerCase()))
 
 
     return (
         <>
+        <h1>TASK LIST</h1>
         <TaskFilter onFilterChange={handleFilterChange}></TaskFilter>
-        <TaskList tasks={filterTasks(tasks)} onStatusChange={handleStatusChange} onDelete={handleDelete} />
+        <TaskList tasks={filteredTasks} onStatusChange={handleStatusChange} onDelete={handleDelete} />
         </>
     );
 };

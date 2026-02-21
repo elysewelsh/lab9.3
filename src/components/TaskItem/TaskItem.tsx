@@ -1,19 +1,7 @@
 import type { TaskItemProps, TaskStatus } from "../../types";
 
-
 function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
-// when dropdown changed, event passed as parameter to use value of target clicked to send to function to update specific task with that new status
-    const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-// new status picked from dropdown and has to be of TaskStatus type
-//         const newStatus = (event.target.value) as TaskStatus;
-// // call onStatusChange with parameters it requested
-//         onStatusChange(task.id, newStatus);
-        alert("changed");
-    };
-// when clicked, passing id of clicked task to onDelete function
-    const handleDelete = () => {
-        onDelete(task.id);
-    };
+
     return (
         <div>
             <div>
@@ -21,28 +9,24 @@ function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
                     <h2>{task.title}</h2>
                     <p>{task.description}</p>
                     <div>
-                        <p>{task.priority}</p>
-                        <p>{task.dueDate}</p>
+                        <p>Priority: {task.priority}</p>
+                        <p>Due Date: {task.dueDate}</p>
                     </div>
                 </div>
-                <select onChange={handleStatusChange}>
-                    <option>Completed</option>
-                    <option>Pending</option>
-                    <option>In Progress</option>
-                </select>
-                <button onClick={handleDelete}>Delete</button>
+                    <div>
+                        <p>Status: </p>
+                        <select value={task.status} onChange={(e) => onStatusChange(task.id, e.target.value as TaskStatus)}>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                        </select>
+                    </div>
+                <button onClick={() => onDelete(task.id)}>Delete</button>
             </div>
         </div>
     );
 };
 export default TaskItem;
-
-
-
-// HELP: 
-// --I don't understand how the options get sent to the functions.
-// --Where are all these arrays stored?
-// --Are tje onStatusChange and onDelete supposed to live here? This seems busy.
 
 
 // REFERENCES:
