@@ -60,12 +60,13 @@ npm run dev
 
 * **Project References:** References and code citations within components
 * **To Format README:** These templates gave me formatting advice and inspiration:
-> - [Scrimba README template](https://github.com/elysewelsh/lab2.1/blob/main/README.md)
-> - [Frontend Mentor README template](https://github.com/elysewelsh/sba3/blob/main/README-template.md)
-> - [asciiflow.com](https://asciiflow.com/#/) made the flow diagram for the architecture
+     - [Scrimba README template](https://github.com/elysewelsh/lab2.1/blob/main/README.md)
+     - [Frontend Mentor README template](https://github.com/elysewelsh/sba3/blob/main/README-template.md)
+     - [asciiflow.com](https://asciiflow.com/#/) made the flow diagram for the architecture
 
 ## 💖 Acknowledgements
->Anyone in the list below has full access to this code and can fork or clone it because they directly contributed to it in some way. Permission has been given to use my repository as reference material to anyone else in class as well.
+
+Anyone in the list below has full access to this code and can fork or clone it because they directly contributed to it in some way. Permission has been given to use my repository as reference material to anyone else in class as well. (Monique shared her repository with me. I didn't visit it, but I do want to give a special acknowledgment for that!)
 
 * **Monique**
 * **Pierre**
@@ -93,6 +94,4 @@ npm run dev
 1. How did you handle state updates for task status changes?
     >I passed a callback function (handleStatusChange) from App.tsx to TaskList and then TaskItem (onStatusChange). When the user clicks the dropdown selection (onChange), TaskItem calls the callback function with the properties of that selection (the target value which is the TaskStatus value bound to the HTML element and the id of the task that the change happened within). App.tsx then received those properties and runs the handleStatusChange function to iterate over all the tasks in the tasks array and creates a copy of the appropriate object (task) within a new array of tasks where only the effected task received the update.
 1. What challenges did you face when implementing conditional rendering?
-    >Looking at this project, it appears that I'm not doing any conditional rendering within the JSX. I'm using conditions in the filter function to send the tasks array to the JSX, but nothing within curly braces in my project has conditions. 
-    >
-    >I will work to add an alert or message based on a condition.
+    >After I read this question and realized I hadn't done any conditional rendering within the JSX, I set out to do conditional rendering. Then, when I started doing the styling, I initially wanted to had a long tenery operator to determine the color of the priority text. I couldn't get it to display properly (too many curly braces), so I went back to Module 9 and Conditional Rendering. When I recognized that the Alert Box from Lab 1 had us doing exactly what I wanted to do, it was simple to implement based on that format.

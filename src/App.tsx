@@ -93,13 +93,14 @@ function App() {
 
 
     return (
-        <>
-        <h1>TASK LIST</h1>
+        <div className="m-0 flex-col min-w-'320px' min-h-'100vh'">
+        <h1 className="flex justify-center font-bold py-10 text-[3.2rem] text-white">TASK LIST</h1>
         <TaskFilter onFilterChange={handleFilterChange}></TaskFilter>
         <TaskList tasks={filteredTasks} onStatusChange={handleStatusChange} onDelete={handleDelete} />
-        </>
+        </div>
     );
 };
+
 
 export default App
 

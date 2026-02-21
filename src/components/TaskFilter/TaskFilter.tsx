@@ -3,9 +3,9 @@ import type { TaskFilterProps, TaskStatus} from "../../types"
 export function TaskFilter ({onFilterChange}: TaskFilterProps) {
 // returns dropdown menus for filtering tasks with appropriate callback functions and props
     return (
-        <form>
-            <label htmlFor="status">Choose an option:</label>
-            <select id="status" onChange={(e) => {
+        <form className="flex gap-3 px-5 justify-center text-white">
+            <label className="font-bold" htmlFor="status">Choose a filter option:</label>
+            <select className="border-1 bg-gray-800 rounded-sm cursor-pointer transition-all duration-[250ms] ease-in-out hover:border-[#3182ce] focus:outline-none" id="status" onChange={(e) => {
                 let statusValue: any = e.target.value;
                 statusValue === ""? (statusValue = "") : (statusValue as TaskStatus);
                 onFilterChange({status: statusValue});
@@ -16,8 +16,8 @@ export function TaskFilter ({onFilterChange}: TaskFilterProps) {
                 <option value="in-progress">In-Progress</option>
             </select>
 
-            <label htmlFor="priority">Choose an option:</label>
-            <select id="priority" onChange={(e) => {
+            <label className="font-bold" htmlFor="priority">Choose a filter option:</label>
+            <select className="border-1 bg-gray-800 rounded-sm cursor-pointer transition-all duration-[250ms] ease-in-out hover:border-[#3182ce] focus:outline-none" id="priority" onChange={(e) => {
               let priorityValue: any = e.target.value;
               priorityValue === ""? (priorityValue = "") : (priorityValue as 'low' | 'medium' | 'high');
               onFilterChange({priority: priorityValue});

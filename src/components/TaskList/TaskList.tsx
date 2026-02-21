@@ -47,7 +47,7 @@ export function TaskList ( {tasks, onStatusChange, onDelete}: TaskListProps) {
 // }
 // export default ProductList;
 
-// From documentation: https://react.dev/learn/rendering-lists :
+// From React documentation: https://react.dev/learn/rendering-lists :
 // const chemists = people.filter(person =>
 //   person.profession === 'chemist'
 // const listItems = chemists.map(person =>
