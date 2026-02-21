@@ -1,4 +1,4 @@
-# 📋 Task Tracker
+# 📋 Task Manager
 
 A client-side application for managing and filtering daily objectives.
 
