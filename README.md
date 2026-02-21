@@ -60,15 +60,17 @@ npm run dev
 
 * **Project References:** References and code citations within components
 * **To Format README:** These templates gave me formatting advice and inspiration:
-- [Scrimba README template](https://github.com/elysewelsh/lab2.1/blob/main/README.md)
-- [Frontend Mentor README template](https://github.com/elysewelsh/sba3/blob/main/README-template.md)
-- [asciiflow.com](https://asciiflow.com/#/) made the flow diagram for the architecture
+> - [Scrimba README template](https://github.com/elysewelsh/lab2.1/blob/main/README.md)
+> - [Frontend Mentor README template](https://github.com/elysewelsh/sba3/blob/main/README-template.md)
+> - [asciiflow.com](https://asciiflow.com/#/) made the flow diagram for the architecture
 
 ## 💖 Acknowledgements
+>Anyone in the list below has full access to this code and can fork or clone it because they directly contributed to it in some way. Permission has been given to use my repository as reference material to anyone else in class as well.
 
 * **Monique**
 * **Pierre**
 * **Adwaina**
+* **Phillip**
 * **Stacy**
 * **Melvin**
 * **Rod**
