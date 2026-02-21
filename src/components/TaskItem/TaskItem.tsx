@@ -1,7 +1,6 @@
 import type { TaskItemProps, TaskStatus } from "../../types";
 
 function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
-
 // returns formatted individual task
     return (
         <div>
@@ -31,5 +30,7 @@ export default TaskItem;
 
 
 // REFERENCES:
+
 // React documentation: https://react.dev/reference/react-dom/components/common#common-props
+
 // using Select and onChange: https://www.delftstack.com/howto/react/react-select-onchange/

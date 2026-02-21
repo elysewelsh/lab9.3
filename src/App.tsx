@@ -106,6 +106,8 @@ export default App
 
 // REFERENCES:
 
+// To filter array on multiple properties: https://www.geeksforgeeks.org/reactjs/how-to-implement-multiple-filters-in-react/
+
 // From Lesson 2 activity in Module 10:
 // let result = FRUITS.filter(fruit => fruit.toLowerCase().includes(debouncedQuery.toLowerCase()))
 

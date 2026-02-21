@@ -17,7 +17,7 @@ export function TaskList ( {tasks, onStatusChange, onDelete}: TaskListProps) {
                 {list}
             </>
         );
-}
+};
 
 // REFERENCES:
 
